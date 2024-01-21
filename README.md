@@ -11,19 +11,23 @@ Wskazana technologia pozwala używać dwóch różnych źródeł contentu, z kt�
 W SharePoint pliki są przechowywane w formacie .docx, natomiast w Google Drive w formacie .gdoc. Problem pojawia się przy próbie przeniesienia plików z Google Drive do Share Point.
 Google umoliwia eksport plików do formatu .docx, jednakże eksportowane pliki nie są w pełni kompatybilne z formatem .docx używanym przez Adobe Franklin na platformie Share Point.
 
-Pierwszą niezgodnością jest oddzielanie sekcji w obu tych formatach. Adobe Franklin w Google Drive wymaga, aby sekcje były oddzielone linią poziomąd, natomiast w Share Point wymagane są 3 znaki myślnika (---). Całość jest opisana [tutaj](https://www.aem.live/docs/authoring#sections).
+### Pierwszy problem
 
-### Google Drive wymagany format
+Pierwszą niezgodnością jest oddzielanie sekcji w obu tych formatach. Adobe Franklin w Google Drive wymaga, aby sekcje były oddzielone linią poziomą, natomiast w Share Point wymagane są 3 znaki myślnika (---). Całość jest opisana [tutaj](https://www.aem.live/docs/authoring#sections).
+
+#### Google Drive wymagany format
 
 ![Google Drive Example](./docs/googledrive.png)
 
-### Share Point wymagany format
+#### Share Point wymagany format
 
 ![Share Point Example](./docs/sharepoint.png)
 
-### Google Drive po eksporcie do .docx - nie można tego pliku użyć w Share Point
+#### Google Drive po eksporcie do .docx - nie można tego pliku użyć w Share Point
 
 ![Google Drive Example](./docs/googledriveexport.png)
+
+### Drugi problem
 
 Drugim problemem jest podkreślanie linków. Przy eksporcie z Google Drive linki są podkreślone, natomiast w Share Point te podkreślenia są niepotrzebne i nierzadko sprawiają problemy.
 
@@ -38,8 +42,21 @@ W przypadku pojedynczego pliku, aplikacja poprawia tylko ten plik.
 
 Pliki, na których mona przetestować działanie aplikacji znajdują się w folderze `example`.
 
+UWAGA: Aplikacja nadpisuje pliki, nie tworzy kopii.
+UWAGA: Aplikacja nie była testowana na systemach Windows.
+
+#### Linux/MacOS
+
 ```bash
 ./conv example/starter-content
 ./conv example/starter-content.zip
 ./conv example/index.docx
+```
+
+#### Windows
+
+```bash
+./conv.exe example/starter-content
+./conv.exe example/starter-content.zip
+./conv.exe example/index.docx
 ```
