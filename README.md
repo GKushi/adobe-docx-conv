@@ -43,6 +43,7 @@ W przypadku pojedynczego pliku, aplikacja poprawia tylko ten plik.
 Pliki, na których mona przetestować działanie aplikacji znajdują się w folderze `example`.
 
 UWAGA: Aplikacja nadpisuje pliki, nie tworzy kopii.
+
 UWAGA: Aplikacja nie była testowana na systemach Windows.
 
 #### Linux/MacOS
@@ -60,3 +61,10 @@ UWAGA: Aplikacja nie była testowana na systemach Windows.
 ./conv.exe example/starter-content.zip
 ./conv.exe example/index.docx
 ```
+
+## Opis implementacji
+
+Aplikacja została napisana w języku GoLang, ponieważ jest to język, który jest kompilowany do pliku binarnego.
+Do edytcji plików Word została użyta biblioteka [docx](https://github.com/nguyenthenguyen/docx) autorstwa nguyenthenguyen, dzięki niej aplikacja może otwierać i edytować pliki .docx.
+
+Aplikacja jest zbudowana z kilku funkcji, najwaniejszą z nich jest `convertDocxFile`, która przyjmuje ścieżkę do pliku .docx i zwraca błąd lub nil w przypadku powodzenia.
