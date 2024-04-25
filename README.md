@@ -30,7 +30,7 @@ The first inconsistency is the way sections are separated in both formats. Adobe
 
 The second issue concerns the underlining of links. When exporting from Google Drive, all links are underlined; however, this underlining is unnecessary in SharePoint and often causes issues.
 
-## Opis rozwiązania
+## Solution Description
 
 Previously, all files had to be manually "repaired." Now, this application automates the process through a compiled program that is invoked with a parameter pointing to the file or folder that needs to be corrected. The parameter can be a single file, a folder, or a zip archive.
 For folders or zip archives, the application recursively processes all files within and corrects them.
