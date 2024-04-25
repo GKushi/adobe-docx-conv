@@ -1,50 +1,46 @@
 # adobe-docx-conv
 
-## Opis problemu
+## Problem Description
 
-Aplikacja odpowiada na realny problem napotkany przy używaniu technologii frontendowej [Adobe Franklin](https://aem.live/).
-Wskazana technologia pozwala używać dwóch różnych źródeł contentu, z którego tworzona jest strona internetowa:
+The application addresses a issue encountered when using the frontend technology [Adobe Franklin](https://aem.live/). Adobe Franklin enables the use of two different content sources to create a website:
 
 - SharePoint (Word, Excel)
 - Google Drive (Google Docs, Google Sheets)
 
-W SharePoint pliki są przechowywane w formacie .docx, natomiast w Google Drive w formacie .gdoc. Problem pojawia się przy próbie przeniesienia plików z Google Drive do Share Point.
-Google umoliwia eksport plików do formatu .docx, jednakże eksportowane pliki nie są w pełni kompatybilne z formatem .docx używanym przez Adobe Franklin na platformie Share Point.
+In SharePoint, files are stored in .docx format, while in Google Drive they are in .gdoc format. A problem arises when attempting to transfer files from Google Drive to SharePoint.
+Although Google allows exporting files to the .docx format, the exported files are not fully compatible with the .docx format used by Adobe Franklin on the SharePoint platform.
 
-### Pierwszy problem
+### First Problem
 
-Pierwszą niezgodnością jest oddzielanie sekcji w obu tych formatach. Adobe Franklin w Google Drive wymaga, aby sekcje były oddzielone linią poziomą, natomiast w Share Point wymagane są 3 znaki myślnika (---). Całość jest opisana [tutaj](https://www.aem.live/docs/authoring#sections).
+The first inconsistency is the way sections are separated in both formats. Adobe Franklin on Google Drive requires sections to be separated by a horizontal line, whereas SharePoint requires three dashes (---). This is further explained [here](https://www.aem.live/docs/authoring#sections).
 
-#### Google Drive wymagany format
+#### Format Required by Google Drive
 
 ![Google Drive Example](./docs/googledrive.png)
 
-#### Share Point wymagany format
+#### Format Required by SharePoint
 
 ![Share Point Example](./docs/sharepoint.png)
 
-#### Google Drive po eksporcie do .docx - nie można tego pliku użyć w Share Point
+#### Google Drive after Export to .docx - This File Cannot Be Used in SharePoint
 
 ![Google Drive Example](./docs/googledriveexport.png)
 
-### Drugi problem
+### Second Problem
 
-Drugim problemem jest podkreślanie linków. Przy eksporcie z Google Drive linki są podkreślone, natomiast w Share Point te podkreślenia są niepotrzebne i nierzadko sprawiają problemy.
+The second issue concerns the underlining of links. When exporting from Google Drive, all links are underlined; however, this underlining is unnecessary in SharePoint and often causes issues.
 
 ## Opis rozwiązania
 
-Do tej pory wszystkie pliki musiały być "naprawiane" ręcznie, natomiast ta aplikacja robi to automatycznie przez wywołanie skompilowanego programu z parametrem ze ścieką do pliku lub folderu, który ma być poprawiony.
-Parametrem może być pojedynczy plik, folder lub archiwum zip.
-W przypadku folderu lub archiwum zip, aplikacja przechodzi rekurencyjnie przez wszystkie pliki wewnątrz i poprawia je.
-W przypadku pojedynczego pliku, aplikacja poprawia tylko ten plik.
+Previously, all files had to be manually "repaired." Now, this application automates the process through a compiled program that is invoked with a parameter pointing to the file or folder that needs to be corrected. The parameter can be a single file, a folder, or a zip archive.
+For folders or zip archives, the application recursively processes all files within and corrects them.
+For individual files, the application only corrects that specific file.
 
-### Przykłady użycia
+### Usage Examples
 
-Pliki, na których mona przetestować działanie aplikacji znajdują się w folderze `example`.
+NOTE: The application overwrites files; it does not create backups.
 
-UWAGA: Aplikacja nadpisuje pliki, nie tworzy kopii.
-
-UWAGA: Aplikacja nie była testowana na systemach Windows.
+NOTE: The application has not been tested on Windows systems.
 
 #### Linux/MacOS
 
@@ -62,9 +58,7 @@ UWAGA: Aplikacja nie była testowana na systemach Windows.
 ./conv.exe example/index.docx
 ```
 
-## Opis implementacji
+## Implementation Description
 
-Aplikacja została napisana w języku GoLang, ponieważ jest to język, który jest kompilowany do pliku binarnego.
-Do edytcji plików Word została użyta biblioteka [docx](https://github.com/nguyenthenguyen/docx) autorstwa nguyenthenguyen, dzięki niej aplikacja może otwierać i edytować pliki .docx.
-
-Aplikacja jest zbudowana z kilku funkcji, najwaniejszą z nich jest `convertDocxFile`, która przyjmuje ścieżkę do pliku .docx i zwraca błąd lub nil w przypadku powodzenia.
+The application is written in GoLang, as it is a language that compiles to a binary file, making it fast and easy to distribute.
+The docx library by nguyenthenguyen is used to edit Word files, allowing the application to open and modify .docx files.
