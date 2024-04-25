@@ -1,5 +1,7 @@
 # adobe-docx-conv
 
+![Application Banner](./docs/banner.webp)
+
 ## Problem Description
 
 The application addresses a issue encountered when using the frontend technology [Adobe Franklin](https://aem.live/). Adobe Franklin enables the use of two different content sources to create a website:
